@@ -1,6 +1,10 @@
 import React from "react";
 import '../styles/header.css'
 import icono from '../images/iconpp.jpg'
+
+
+//import browserrouter
+import { Link } from "react-router-dom";
 class Header extends React.Component{
 
     render(){
@@ -15,7 +19,8 @@ class Header extends React.Component{
                     <p className="txt1">Proveedores</p>
                     <br/>
                     <p className="txt2">Si a&uacute;n no cuenta con su acceso</p>
-                    <a href="SolictdAccss.html"><p className="sas">Solicitela aqu&iacute;</p></a>
+                    
+                    <Link to="./solicitud"> Solicitela aqu&iacute;</Link>
                     </div>
             </div>
         )

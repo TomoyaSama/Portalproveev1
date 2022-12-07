@@ -1,29 +1,43 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
-.content{
-    padding:20px;
-    
-    margin: auto;
-    width:  50%;
-   text-align: center;
-}
-.pb{
-  font-family: 'Open Sans', sans-serif;
-  color: #000;
-  font-size: 25px;
-}
-.pb1{
-  font-family: 'Open Sans', sans-serif;
-  font-family: 'Open Sans', sans-serif;
-    text-align: center;
-    color: #fff;
+.Header{
+    margin: 0%;
+    padding: 0%;
+     width: 100%;
+     height: 113px;
+     overflow: hidden;
+     position: block;
+     background: #8d0909;
+     box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.5);
+     top: 0;
+ }
+ .txt2{
+    font-family: 'Open Sans', sans-serif;
     font-size: 25px;
+    color: black;
 }
+.txt{
+    color: black;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+}
+ .pindx{
+    font-family: 'Open Sans', sans-serif;
+    float: left;
+    margin: 34px 0 0 0;
+    color: white;
+    padding: 0 0 0 20PX;
+    font-size: 30px;
+}
+
+/*form*/
+
 input[type=text] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
     border: 3px solid #ccc;
     -webkit-transition: 0.5s;
     transition: 0.5s;
@@ -34,6 +48,7 @@ input[type=text]:focus {
   }
   input[type=password] {
     width: 100%;
+    font-family: 'Open Sans', sans-serif;
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
@@ -46,8 +61,13 @@ input[type=password]:focus {
     border: 3px solid #555;
   }
 
+table{
+  margin: 150px auto 0px auto;
+    width:  50%;
+   text-align: center;
+   background-color: #dbd6d6;
+   }
  label{
-    padding-top: 20px;
     font-size: 30px;
     font-family: 'Open Sans', sans-serif;
  }
@@ -61,6 +81,7 @@ input[type=password]:focus {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
     margin: 4px 2px;
     transition-duration: 0.4s;
     cursor: pointer;
@@ -69,4 +90,10 @@ input[type=password]:focus {
  input[type=submit]:hover{
     background-color: #4CAF50;
   color: white;
+ }
+
+ .form{
+  width: 100%;
+  height: 100%;
+  margin-top: 0%;
  }
