@@ -26,7 +26,13 @@ class Info extends React.Component{
                 </div>
             </div>
             <div className="cuerp">
-                <p className="prr">Informaci&oacute;n del proveedor</p>
+                <table className="tbinp"><tr>
+                    <td colspan="2"><p className="prr">Informaci&oacute;n del proveedor</p></td>
+                    </tr>
+                    <tr><td>Nombre: </td><td>Ariel Loranca</td> </tr>
+                    <tr><td>Empresa:</td><td>TIAmerica</td></tr>
+                    <tr><td>RFC:</td><td>LOAA90088</td></tr>
+                </table>
             </div>
         </div>
         )

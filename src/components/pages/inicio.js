@@ -22,7 +22,7 @@ render(){
                     </div>
                 </div>
             </div>
-            <div>
+            <div className="cuini">
                 <p className="prraf"> Bienvenido al portal de Proveedores</p>
             </div>
         </div>

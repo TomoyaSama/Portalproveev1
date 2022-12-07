@@ -1,8 +1,15 @@
 .cuerp{
-    margin: 120px 0 0 20px;
+    margin-top: 10%;
+    margin-left: 16%;
+    width: 80%;
+
 }
 .prr{
    color: black;
    font-size: 30px;
    text-align: center; 
+}
+.tbinp{
+    width: 100%;
+    text-align: center;
 }

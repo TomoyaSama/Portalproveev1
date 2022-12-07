@@ -1,10 +1,11 @@
 import React from "react";
 import '../styles/login.css'
+import '../styles/header.css'
 import 'react-bootstrap'
 import icono from '../images/iconpp.jpg'
 
 //import css
-import '../styles/header.css' 
+
  import { Outlet, Link } from "react-router-dom";
 
 class Login extends React.Component{
@@ -24,20 +25,22 @@ class Login extends React.Component{
                 <p className="pb1"><Link to="./solicitud"> Solicitela aqu&iacute;</Link></p>
             </div>
                     <Outlet/>
-            <div  className="col-6  content">
-            <p class="pb">Bienvenido a la secci&oacute;n de Proveedores</p>
-            <p class="pb">Es necesario que se identifique antes de hacer uso de esta aplicaci&oacute;n</p>
-            <hr/>
-            <label name="txt" for="user"> Usuario <strong>*</strong> </label>
-                <input id="user" name="user" type="text" placeholder="nombre de usuario"/>
+            <div  className="col-6  content-log">
+                <p class="pb">Bienvenido a la secci&oacute;n de Proveedores</p>
+                <p class="pb">Es necesario que se identifique antes de hacer uso de esta aplicaci&oacute;n</p>
+                <hr/>
+                <form>
+                    <table className="tblini">
 
-               <label  for="pass" name="txt">Contraseña <strong>*</strong></label>
-                <input  id="pass" type="password" name="pass" placeholder="Contraseña"/>
-            
-          <input type="submit" name="iniciarsessn" value="Iniciar Sesi&oacute;n"/>
-
+                        <tr><td><label name="txt" className="lbl" for="user"> Usuario <strong>*</strong> </label></td>
+                        <td><input id="user" className="inptxt1" name="user" type="text" placeholder="nombre de usuario"/></td></tr>
+                        <tr> <td><label className="lbl" for="pass" name="txt">Contraseña <strong>*</strong></label></td>
+                        <td><input className="inppss" id="pass" type="password" name="pass" placeholder="Contraseña"/></td></tr>
+                        <tr><td colspan="2"><input className="sbmt" type="submit" name="iniciarsessn" value="Iniciar Sesi&oacute;n"/></td></tr>
+                    </table>
+                </form>
             </div>
-            </div>
+        </div>
         )
     }
 }

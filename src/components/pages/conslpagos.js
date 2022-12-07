@@ -1,5 +1,6 @@
 import React from "react";
 import logo from '../images/iconpp.jpg'
+import '../styles/cnstpgs.css'
 
 
 
@@ -23,7 +24,7 @@ class Consulta extends React.Component{
                     </div>
                 </div>
             </div>
-            <div className="cuerp">
+            <div className="cuerp-cp">
                 <p className="prr">Consulta Pagos</p>
             </div>
         </div>

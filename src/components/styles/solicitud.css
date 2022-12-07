@@ -20,6 +20,7 @@
     color: black;
     font-family: 'Open Sans', sans-serif;
     font-size: 18px;
+    text-align: center;
 }
  .pindx{
     font-family: 'Open Sans', sans-serif;
@@ -32,7 +33,7 @@
 
 /*form*/
 
-input[type=text] {
+.inptxt {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -43,36 +44,25 @@ input[type=text] {
     transition: 0.5s;
     outline: none;
   }
-input[type=text]:focus {
-    border: 3px solid #555;
-  }
-  input[type=password] {
-    width: 100%;
-    font-family: 'Open Sans', sans-serif;
-    padding: 12px 20px;
-    margin: 8px 0;
-    box-sizing: border-box;
-    border: 3px solid #ccc;
-    -webkit-transition: 0.5s;
-    transition: 0.5s;
-    outline: none;
-  }
-input[type=password]:focus {
+.inptxt:focus {
     border: 3px solid #555;
   }
 
-table{
+.tabsol{
   margin: 150px auto 0px auto;
     width:  50%;
-   text-align: center;
-   background-color: #dbd6d6;
+   
+   /*background-color: #dbd6d6;*/
    }
- label{
+.lbll{
     font-size: 30px;
     font-family: 'Open Sans', sans-serif;
  }
-
- input[type=submit]{
+.tddd{
+  padding: 15px;
+  text-align: center;
+}
+.btnsb{
     background-color: white; 
     color: black; 
     border: 2px solid #4CAF50;
@@ -85,6 +75,7 @@ table{
     margin: 4px 2px;
     transition-duration: 0.4s;
     cursor: pointer;
+  
  }
 
  input[type=submit]:hover{
@@ -96,4 +87,14 @@ table{
   width: 100%;
   height: 100%;
   margin-top: 0%;
+ }
+
+ .pinci{
+  color: #fff;
+  float: right;
+  padding: 20px;
+  margin-right: 2%;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 20px;
+
  }
