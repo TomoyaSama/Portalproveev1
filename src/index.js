@@ -29,6 +29,7 @@ export default function App(){
     <BrowserRouter>
       <Routes>
       <Route path="/" element={<Login/>}></Route>
+      <Route path="login" element={<Login/>}></Route>
       <Route path="/solicitud" element={<Solicitud/>}></Route>
       <Route path='/inicio' element={<Home/>}></Route>
       <Route path='/informacion' element={<Info/>}></Route>
@@ -36,6 +37,11 @@ export default function App(){
       </Routes>
     </BrowserRouter>
   )
+/*
+  <Route path="/solicitud" element={<Solicitud/>}></Route>
+      <Route path='/inicio' element={<Home/>}></Route>
+      <Route path='/informacion' element={<Info/>}></Route>
+      <Route path='/ConsultaPago' element={<Consulta/>}></Route>*/
 }
 
 

@@ -30,7 +30,7 @@
     transition: 0.5s;
     outline: none;
   }
-.inptxt:focus {
+.inptxt1:focus {
     border: 3px solid #555;
   }
  .inppss {
