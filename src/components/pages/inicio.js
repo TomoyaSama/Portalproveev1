@@ -2,7 +2,7 @@ import React from "react";
 import 'react-bootstrap'
 import '../styles/heade2.css'
 import logo from '../images/iconpp.jpg'
-import { useState } from 'react';
+//import { useState } from 'react';
 class Inicio extends React.Component{
  
 render(){
@@ -12,7 +12,7 @@ render(){
             <div className="Header">
                 <div className="img"> <img name="imgini" id="imgini" className="imgini" src={logo}/></div>
                 <p name="pindx" id="pindx" class="pindx"><a href="/inicio">Proveedores</a></p>
-                <span className="sali"><a href="/" onClick={localStorage.clear()}>Salir</a></span>
+                <span className="sali" onClick={localStorage.clear()}>Salir</span>
             </div>
             <div className="content-1">
                 <div className="row">

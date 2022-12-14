@@ -1,46 +1,67 @@
 import React from "react";
+import { useRef, useState, useEffect } from "react";
 import '../styles/login.css'
 import '../styles/header.css'
 //import 'react-bootstrap'
 import icono from '../images/iconpp.jpg'
-import { useState } from "react";
+//import { useState } from "react";
 import axios from "axios"; 
-import { useNavigate } from 'react-router'
-
-
-
+import { Link,useLocation, useNavigate } from 'react-router-dom'
+import useAuth from "../../hooks/UseAuth";
+//import md5 from 'md5'
 
 //import css
+//const baseUrl = "http://localhost:4000/";
 
- import { Outlet, Link, Redirect } from "react-router-dom";
+ 
+const Login =()=> {
+    const { setAuth } = useAuth()
+    const navigate = useNavigate()
+    const location = useLocation()
+    const from = location.state?.from?.pathname || "/"
 
-const Login=()=>{
-    const navigate = useNavigate();
+    const userRef = useRef();
+    const errRef =useRef();
+
+    const[errMsg, setErrMsg] = useState('');
     
-    const [body, setBody]  = useState({username:'', password:''})
-    const inputChange=({target}) =>{
-        const{name, value} = target
+
+    useEffect(()=>{
+        setErrMsg('');
+    },[])
+    
+    const [body, setBody] = useState({username:'', password: ''})
+    //metodo para enviar datos a la appi
+   const handlesubmit= e =>{
+    e.preventDefault()
+    
+}
+    const onSubmit =  ()=>{
+        axios.post('http://localhost:4000/api/login',body)
+        .then(({data})=>{
+            console.log(data)
+        }).catch(({response})=>{
+             console.log(response.data)
+        }
+        )
+    }
+    
+
+    //parte de captura de datos de input
+    const inputChange=({target})=>{
+        const {name, value}= target
         setBody({
-            ...body,
-            [name]: value
+            ...body, [name]: value
         })
     }
-    const onSubmit=()=>{
-        axios.post('http://localhost:4000/api/login', body)
-        .then(({data})=>{
-                localStorage.setItem('auth','"yes"')
-                //this.props.history.push('/inicio')
-                //history.push('/login')
-                navigate('/inicio')
-            }).catch(({response})=>{
-                console.log(response)
-            })
-        }
+ 
     
-        return( 
+   
+        return(
+            <section>
             <div>
-            <div id="Header" name="hader" class="header ">
-                    <div class="img"> <img  className="imgini" src={icono} /></div>
+            <div id="Header" name="hader" className="header ">
+                    <div className="img"> <img  className="imgini" src={icono} /></div>
                     <p name="pindx" id="pindx" className="pindx"><a href="/">Proveedores</a></p>
             </div>
 
@@ -48,27 +69,60 @@ const Login=()=>{
                 <p className="txt1">!Proveedores¡</p>
                 <br/>
                 <p className="pb1">Si a&uacute;n no cuenta con su acceso</p>                    
-                <p className="pb1"><Link to="./solicitud"> Solicitela aqu&iacute;</Link></p>
+                <p className="pb1"><Link to="/solicitud"> Solicitela aqu&iacute;</Link></p>
             </div>
-                    <Outlet/>
+                    
             <div  className="col-6  content-log">
-                <p class="pb">Bienvenido a la secci&oacute;n de Proveedores</p>
-                <p class="pb">Es necesario que se identifique antes de hacer uso de esta aplicaci&oacute;n</p>
+                <p className="pb">Bienvenido a la secci&oacute;n de Proveedores</p>
+                <p className="pb">Es necesario que se identifique antes de hacer uso de esta aplicaci&oacute;n</p>
                 <hr/>
-                <form>
-                    <table className="tblini">
+                <form onSubmit={handlesubmit}>
+                    <table className="tblini"><tbody>
 
-                        <tr><td><label name="txt" className="lbl" for="user"> Usuario <strong>*</strong> </label></td>
-                        <td><input id="user" className="inptxt1" value={body.username} onChange={inputChange} name="username" type="text" placeholder="nombre de usuario"/></td></tr>
-                        <tr> <td><label className="lbl" for="pass" name="txt">Contraseña <strong>*</strong></label></td>
-                        <td><input className="inppss" value={body.password} onChange={inputChange} id="pass" type="password" name="password" placeholder="Contraseña"/></td></tr>
-                        <tr><td colspan="2"><input className="sbmt" onClick={ onSubmit } name="iniciarsessn" value="Iniciar Sesi&oacute;n"/></td></tr>
-                    </table>
+                        <tr><td>
+                            <label  name="txt" 
+                                    className="lbl" 
+                                    htmlFor="username"> Usuario <strong>*</strong> 
+                            </label></td>
+                        <td>
+                            <input 
+                                id="user" 
+                                className="inptxt1" 
+                                name="username" 
+                                type="text" 
+                                placeholder="nombre de usuario"
+                                value={body.username}
+                                onChange={inputChange}
+                                />
+                        </td></tr>
+                        <tr><td>
+                            <label className="lbl" 
+                                    htmlFor="pass" 
+                                    name="txt">Contraseña <strong>*</strong>
+                            </label></td>
+                        <td>
+                            <input 
+                                className="inppss"
+                                id="pass" 
+                                type="password" 
+                                name="password" 
+                                placeholder="Contraseña"
+                                value={body.password}
+                                onChange={inputChange}
+                                />
+                        </td></tr>
+                        <tr><td colSpan="2">
+                            <button className="sbmt" 
+                                    onClick={onSubmit}  
+                                    name="iniciarsessn" >Iniciar session</button></td></tr>
+                        </tbody></table>
                 </form>
             </div>
         </div>
+        </section>
         )
-    }
+        
+}
 
 
 export default Login

@@ -1,3 +1,4 @@
+/*
 import React from 'react'
 import { renderRoutes } from '../../routeUtils'
 
