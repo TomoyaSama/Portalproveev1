@@ -11,7 +11,7 @@ import useAuth from "../../hooks/UseAuth";
 //import md5 from 'md5'
 
 //import css
-//const baseUrl = "http://localhost:4000/";
+const baseUrl = "http://localhost:4000/api/login";
 
  
 const Login =()=> {
@@ -23,27 +23,31 @@ const Login =()=> {
     const userRef = useRef();
     const errRef =useRef();
 
-    const[errMsg, setErrMsg] = useState('');
-    
-
+   // const[errMsg, setErrMsg] = useState('');
+/*
     useEffect(()=>{
         setErrMsg('');
-    },[])
+    },[])*/
     
     const [body, setBody] = useState({username:'', password: ''})
-    //metodo para enviar datos a la appi
+    
+//metodo para enviar datos a la appi 
+
    const handlesubmit= e =>{
     e.preventDefault()
     
 }
-    const onSubmit =  ()=>{
-        axios.post('http://localhost:4000/api/login',body)
+    const onSubmit = async ()=>{
+
+        const response = await  axios.post(baseUrl,body)
         .then(({data})=>{
-            console.log(data)
-        }).catch(({response})=>{
-             console.log(response.data)
-        }
-        )
+            console.log(data)})
+        .catch(({response})=>{ 
+            console.log(response.data)
+        })
+
+        const accessToken = response?.data?.accessToken;
+        const roles = response?.data?.roles;
     }
     
 
