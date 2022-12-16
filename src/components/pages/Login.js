@@ -9,11 +9,13 @@ import axios from "axios";
 import { Link,useLocation, useNavigate } from 'react-router-dom'
 import useAuth from "../../hooks/UseAuth";
 //import md5 from 'md5'
-
+import Cookies from "universal-cookie";
 //import css
 const baseUrl = "http://localhost:4000/api/login";
+ const cookies = new Cookies()
 
- 
+
+
 const Login =()=> {
     const { setAuth } = useAuth()
     const navigate = useNavigate()
@@ -23,11 +25,11 @@ const Login =()=> {
     const userRef = useRef();
     const errRef =useRef();
 
-   // const[errMsg, setErrMsg] = useState('');
-/*
+   const[errMsg, setErrMsg] = useState('');
+
     useEffect(()=>{
         setErrMsg('');
-    },[])*/
+    },[])
     
     const [body, setBody] = useState({username:'', password: ''})
     
@@ -37,17 +39,24 @@ const Login =()=> {
     e.preventDefault()
     
 }
-    const onSubmit = async ()=>{
+    const onSubmit = ()=>{
 
-        const response = await  axios.post(baseUrl,body)
+        const response =  axios.post(baseUrl,body)
         .then(({data})=>{
-            console.log(data)})
+            console.log(data)
+
+            setAuth({data })
+                cookies.set('data',data ,{path:'/'})
+                navigate(from, {replace: true})
+                window.location.href="/inicio"
+            } )
         .catch(({response})=>{ 
             console.log(response.data)
+            var errs= response.data
+            setErrMsg( errs)
         })
 
-        const accessToken = response?.data?.accessToken;
-        const roles = response?.data?.roles;
+        
     }
     
 
@@ -97,6 +106,7 @@ const Login =()=> {
                                 placeholder="nombre de usuario"
                                 value={body.username}
                                 onChange={inputChange}
+                                required
                                 />
                         </td></tr>
                         <tr><td>
@@ -113,12 +123,14 @@ const Login =()=> {
                                 placeholder="Contraseña"
                                 value={body.password}
                                 onChange={inputChange}
+                                required
                                 />
                         </td></tr>
                         <tr><td colSpan="2">
                             <button className="sbmt" 
                                     onClick={onSubmit}  
-                                    name="iniciarsessn" >Iniciar session</button></td></tr>
+                                    name="iniciarsessn" >Iniciar sesion</button></td></tr>
+                                    <tr><td colSpan={2}><p ref={errRef} className={errMsg ? "errmsg": "offscreen"} aria-live="assertive">{errMsg}</p></td></tr>
                         </tbody></table>
                 </form>
             </div>

@@ -12,6 +12,7 @@ import Log2 from './components/pages/Loginb';
 import Layout from './rotes/Layout'
 
 import RequireAuth from './components/pages/RequireAuth'
+import Unauthorized from './components/pages/Unauthorized';
 
 
 // poner el dom correcto desde otras paginas 
@@ -24,6 +25,13 @@ import RequireAuth from './components/pages/RequireAuth'
       <Route path='/ConsultaPago' element={<Consulta/>}></Route>*/
 
 
+//roles
+
+const ROLES ={
+'user': '00AB',
+'Admin': '00AA'
+}
+
 function App() {
   return (
     <Routes>
@@ -31,12 +39,13 @@ function App() {
          {/* public routes */}
         <Route path="/" element={<Login/>}/>
         <Route path="/solicitud" element={<Solicitud/>}/>
+        <Route path='/sinautorizado' element={<Unauthorized/>}/>
         {/* we want to protect these routes */}
-        <Route element={<RequireAuth/>}>
+        
           <Route path='/inicio' element={<Home/>}/>
           <Route path='/informacion' element={<Info/>}/>
           <Route path='/ConsultaPago' element={<Consulta/>}/>
-        </Route>
+        
       {/*</Route>*/}
     </Routes>
       

@@ -1,0 +1,6 @@
+2022.12.16 11:10:47 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at c:\Users\Ariel Loranca Agüero\Documents\pruebas  react\reactv22\.metals\lsp.trace.json or C:\Users\Ariel Loranca Agüero\AppData\Local\scalameta\metals\cache\lsp.trace.json
+2022.12.16 11:10:49 INFO  logging to file C:\Users\Ariel Loranca Agüero\Documents\pruebas  react\reactv22\.metals\metals.log
+2022.12.16 11:10:49 INFO  Started: Metals version 0.11.9 in workspace 'C:\Users\Ariel Loranca Agüero\Documents\pruebas  react\reactv22' for client Visual Studio Code 1.74.1.
+2022.12.16 11:10:53 INFO  time: initialize in 3.9s
+2022.12.16 11:10:56 WARN  Build server is not auto-connectable.
+2022.12.16 11:10:56 WARN  no build tool detected in workspace 'C:\Users\Ariel Loranca Agüero\Documents\pruebas  react\reactv22'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
