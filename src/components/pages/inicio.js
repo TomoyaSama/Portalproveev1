@@ -11,7 +11,7 @@ render(){
         <div>
             <div className="Header">
                 <div className="img"> <img name="imgini" id="imgini" className="imgini" src={logo}/></div>
-                <p name="pindx" id="pindx" class="pindx"><a href="/inicio">Proveedores</a></p>
+                <p name="pindx" id="pindx" className="pindx"><a href="/inicio">Proveedores</a></p>
                 <span className="sali" onClick={localStorage.clear()}><a href="/">Salir</a></span>
             </div>
             <div className="content-1">

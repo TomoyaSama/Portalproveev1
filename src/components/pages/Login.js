@@ -17,10 +17,12 @@ const baseUrl = "http://localhost:4000/api/login";
 
 
 const Login =()=> {
-    const { setAuth } = useAuth()
+
+    const { setAuth } = useAuth();
+
     const navigate = useNavigate()
     const location = useLocation()
-    const from = location.state?.from?.pathname || "/"
+    const from = location.state?.from?.pathname || "/inicio"
 
     const userRef = useRef();
     const errRef =useRef();
@@ -41,18 +43,25 @@ const Login =()=> {
 }
     const onSubmit = ()=>{
 
-        const response =  axios.post(baseUrl,body)
+        const response = axios.post(baseUrl,body)
         .then(({data})=>{
             console.log(data)
+            
+            const idus = data?.emp
+            const nous = data?.username
+            const usus = data?.user
+            const emus = data?.empus
+            const role = data?.rol
 
-            setAuth({data })
-                cookies.set('data',data ,{path:'/'})
-                navigate(from, {replace: true})
-                window.location.href="/inicio"
+            
+            setAuth({ idus, nous, usus,emus, role });
+                //cookies.set('', ,{path:'/'})
+                navigate(from, {replace: true});
+                //window.location.href="/inicio"
             } )
         .catch(({response})=>{ 
-            console.log(response.data)
-            var errs= response.data
+            console.log(response?.data)
+            var errs= response?.data
             setErrMsg( errs)
         })
 
@@ -68,8 +77,6 @@ const Login =()=> {
         })
     }
  
-    
-   
         return(
             <section>
             <div>
