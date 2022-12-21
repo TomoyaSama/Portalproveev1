@@ -32,7 +32,8 @@ class Solicitud extends React.Component{
        <div className="form">
         <form onSubmit={this.handlesubmit}>
             <table className="tabsol">
-                <tr><td colspan="2" className="txt2">Ingrese los siguientes datos</td></tr>
+                <tbody>
+                <tr><td colSpan="2" className="txt2">Ingrese los siguientes datos</td></tr>
                 <tr><td name="txt" className="txt"> Nombre de la empresa: </td>
                 <td><input name="nempresa" onChange={this.handleChage} value={this.state.nempresa} className="inptxt" type="text" placeholder="nombre de la empresa"/></td></tr>
                 <tr>
@@ -48,8 +49,8 @@ class Solicitud extends React.Component{
                     <td><input type="text" className="inptxt" name="nombrec" onChange={this.handleChage} value={this.state.nombrec} placeholder="Nombre"/></td>
                 </tr>
         
-                <tr><td className="tddd" colspan="2"><input className="btnsb" type="submit" name="solicitar" value="Solicitar"/></td></tr>
-            </table>
+                <tr><td className="tddd" colSpan="2"><input className="btnsb" type="submit" name="solicitar" value="Solicitar"/></td></tr>
+                </tbody> </table>
             </form>
         </div>
 </div>

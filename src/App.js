@@ -1,6 +1,6 @@
 import './App.css';
 
-import { BrowserRouter, Routes, Route} from 'react-router-dom';
+import { Routes, Route} from 'react-router-dom';
 
 //pages
 import Login from './components/pages/Login';
@@ -12,15 +12,16 @@ import Consulta from './components/pages/conslpagos';
 //import Layout from './rotes/Layout'
 
 import RequireAuth from './components/pages/RequireAuth'
-import PrivateRoute from './context/PrivateRoute'
+//import PrivateRoute from './context/PrivateRoute'
 
 import Unauthorized from './components/pages/Unauthorized';
-import { getRoles } from '@testing-library/react';
+
 //import ROLES from './helpers/roles';
 const ROLES = {
   'user': "USUS",
   'Admin': "ADAD",
   }
+
 
 // poner el dom correcto desde otras paginas 
     
@@ -37,6 +38,7 @@ const ROLES = {
 
 
 function App() {
+  
   return (
     <Routes>
       {/*<Route path="/" element={<Layout/>}>*/}
@@ -46,16 +48,24 @@ function App() {
         <Route path='/sinautorizado' element={<Unauthorized/>}/>
         {/* we want to protect these routes */}
         <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
+        
         {/*<PrivateRoute hasRole={ROLES.Admin} >*/}
           <Route path='/inicio' element={<Home/>}/>
           <Route path='/informacion' element={<Info/>}/>
           <Route path='/ConsultaPago' element={<Consulta/>}/>
         {/*</PrivateRoute>*/}
+       
       </Route>
+    
     </Routes>
       
     
   )
 }
 
+/*
+<Route element={<RequireAuth allowedRoles={[ROLES].user}/>}>
+        <Route path='/a' element={<a/>} />
+      </Route>
+*/
 export default App;

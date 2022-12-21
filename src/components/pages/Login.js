@@ -30,6 +30,9 @@ const Login =()=> {
    const[errMsg, setErrMsg] = useState('');
 
     useEffect(()=>{
+        userRef.current.focus()
+    },[])
+    useEffect(()=>{
         setErrMsg('');
     },[])
     
@@ -47,14 +50,14 @@ const Login =()=> {
         .then(({data})=>{
             console.log(data)
             
-            const idus = data?.emp
-            const nous = data?.username
+            const idus = data?.idus
+            const user = data?.username
             const usus = data?.user
             const emus = data?.empus
-            const role = data?.rol
+            const roles = data?.role
 
             
-            setAuth({ idus, nous, usus,emus, role });
+            setAuth({ idus, user, usus, emus, roles });
                 //cookies.set('', ,{path:'/'})
                 navigate(from, {replace: true});
                 //window.location.href="/inicio"
@@ -67,8 +70,6 @@ const Login =()=> {
 
         
     }
-    
-
     //parte de captura de datos de input
     const inputChange=({target})=>{
         const {name, value}= target
@@ -112,6 +113,7 @@ const Login =()=> {
                                 type="text" 
                                 placeholder="nombre de usuario"
                                 value={body.username}
+                                ref={userRef}
                                 onChange={inputChange}
                                 required
                                 />
