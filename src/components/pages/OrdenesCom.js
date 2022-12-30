@@ -1,15 +1,13 @@
-import React from "react";
-import '../styles/login.css'
-import '../styles/inform.css'
+import React from "react"
+import { Link, useNavigate } from "react-router-dom"
 import { useContext } from "react";
 import AuthContext from "../../context/AuthProvider"
-import { useNavigate, Link } from "react-router-dom";
-import Cookies from 'universal-cookie'
-
+import '../styles/ordc.css'
 import logo from '../images/iconpp.jpg'
 
+import Cookies from "universal-cookie"
 
-const Info =() =>{
+const Ordrc =() =>{
 
     const cookies = new Cookies()
     const { setAuth }= useContext(AuthContext)
@@ -37,7 +35,7 @@ const Info =() =>{
                                 <li className="obj1"><Link to="/consultaPago"> Consulta de pagos</Link></li>
                                 <li className="obj1"><Link to="/ordenesCompra"> Ordenes de compra</Link></li>
                                 <li className="obj1"><Link to="/infoFacturas"> Facturas</Link></li>
-                        </ul>
+                            </ul>
                     </div>
                 </div>
             </div>
@@ -45,7 +43,7 @@ const Info =() =>{
                 <table className="tbinp">
                     <tbody>
                     <tr>
-                    <td colSpan="2"><p className="prr">Informaci&oacute;n del proveedor</p></td>
+                    <td colSpan="2"><p className="prr">Informaci&oacute;n Ordenes de compra</p></td>
                     </tr>
                     <tr><td className="ifp">Nombre: </td><td className="ifp">{cookies.get('user')}</td> </tr>
                     <tr><td className="ifp">Empresa:</td><td className="ifp">{cookies.get('emprs')}</td></tr>
@@ -57,5 +55,4 @@ const Info =() =>{
     
 
 }
-
-export default Info 
+export default Ordrc

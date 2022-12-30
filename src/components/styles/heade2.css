@@ -85,13 +85,15 @@ p.pb1{
    
 }
 .sali{
-    
+    color: #FFF;
+    background-color: #8d0909;
     font-size: 25px;
     float: right;
     margin-top: 2.5%;
     padding: 0 5% 0 0;
-    color: #fff;
     font-family: 'Open Sans', sans-serif;
+    border: 0;
+    cursor: pointer;
 }
 .cuini{
     margin-left: 15.5%;
@@ -99,3 +101,6 @@ p.pb1{
     height: 100%;
     margin-top: 11.2%;
 }
+
+.ltsp{
+    text-transform:capitalize;}

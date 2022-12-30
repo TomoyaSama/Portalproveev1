@@ -2,67 +2,101 @@ import React from "react";
 import { useRef, useState, useEffect } from "react";
 import '../styles/login.css'
 import '../styles/header.css'
-//import 'react-bootstrap'
 import icono from '../images/iconpp.jpg'
-//import { useState } from "react";
 import axios from "axios"; 
 import { Link,useLocation, useNavigate } from 'react-router-dom'
 import useAuth from "../../hooks/UseAuth";
+
+
 //import md5 from 'md5'
+
+
 import Cookies from "universal-cookie";
 //import css
 const baseUrl = "http://localhost:4000/api/login";
- const cookies = new Cookies()
-
-
+ 
+const cookies = new Cookies()
 
 const Login =()=> {
 
-    const { setAuth } = useAuth();
+    //login constantes del form datos a enviar a la api
+    const [body, setBody] = useState({username:'', password: ''})
+    const user= useState('')
+    const pdw = useState('')
 
+    //constantes para hacer cambios de pagina 
     const navigate = useNavigate()
     const location = useLocation()
+
+//use auth guarda el estado en archivos independientes 
+    const { setAuth } = useAuth();
+
+   //locacion para  inicio
     const from = location.state?.from?.pathname || "/inicio"
 
+    //constantes para usar regferencias 
     const userRef = useRef();
-    const errRef =useRef();
-
+    const errRef = useRef();
+//constante de mesnaje de error
    const[errMsg, setErrMsg] = useState('');
 
+
+   //parte de captura de datos de input
+   const inputChange=({target})=>{
+    const {name, value}= target
+    setBody({
+        ...body, [name]: value
+    })
+}
+
+//use effect 
     useEffect(()=>{
         userRef.current.focus()
     },[])
     useEffect(()=>{
         setErrMsg('');
-    },[])
+    },[body])
     
-    const [body, setBody] = useState({username:'', password: ''})
-    
-//metodo para enviar datos a la appi 
 
+     
+     //evitar reload
    const handlesubmit= e =>{
     e.preventDefault()
     
 }
+//push login
     const onSubmit = ()=>{
-
+    
+        //metodo para enviar datos a la appi 
         const response = axios.post(baseUrl,body)
         .then(({data})=>{
-            console.log(data)
-            
+           
+           //data trae la información que envia la api 
             const idus = data?.idus
             const user = data?.username
             const usus = data?.user
             const emus = data?.empus
             const roles = data?.role
-
+            const rfus = data?.rfc
+            const token = data?.token
             
-            setAuth({ idus, user, usus, emus, roles });
-                //cookies.set('', ,{path:'/'})
-                navigate(from, {replace: true});
+            //guradado de datos en setaut
+            setAuth({ idus, user, usus, emus, roles, rfus });
+            //cookies :)
+            cookies.set('id',idus ,{path:'/', maxAge: 86400, secure:true })
+            cookies.set('user',user ,{path:'/'})
+            cookies.set('userc',usus ,{path:'/'})
+            cookies.set('emprs',emus ,{path:'/'})
+            cookies.set('rlus',roles ,{path:'/'})
+            cookies.set('rfus',rfus ,{path:'/'})
+            cookies.set('token',token ,{path:'/', maxAge: 86400, secure:true })
+           
+            localStorage.setItem('user', token)
+            navigate(from, {replace: true});
                 //window.location.href="/inicio"
             } )
         .catch(({response})=>{ 
+            //control de errores de inicio
             console.log(response?.data)
             var errs= response?.data
             setErrMsg( errs)
@@ -70,13 +104,7 @@ const Login =()=> {
 
         
     }
-    //parte de captura de datos de input
-    const inputChange=({target})=>{
-        const {name, value}= target
-        setBody({
-            ...body, [name]: value
-        })
-    }
+   
  
         return(
             <section>

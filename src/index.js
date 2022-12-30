@@ -9,9 +9,7 @@ import { AuthProvider } from './context/AuthProvider';
 import reportWebVitals from './reportWebVitals';
 
 //paginaciones
-
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
-
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
